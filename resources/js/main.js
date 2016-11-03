@@ -14,8 +14,15 @@ document.getElementById('add').addEventListener('click', function() {
   // If text field is not empty - execute addItemTodo function
   if (value) {
     addItemTodo(value);
+    document.getElementById('item').value = '';
   }
 });
+
+function removeItem() {
+  const item = this.parentNode.parentNode;
+  const parent = item.parentNode;
+  parent.removeChild(item);
+}
 
 // Add new item to the todo list
 function addItemTodo(text) {
@@ -30,6 +37,9 @@ function addItemTodo(text) {
   const remove = document.createElement('button');
   remove.classList.add('remove');
   remove.innerHTML = removeSVG;
+
+  // Add click event for remove button
+  remove.addEventListener('click', removeItem)
 
   const complete = document.createElement('button');
   complete.classList.add('complete');
