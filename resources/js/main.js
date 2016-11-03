@@ -10,7 +10,11 @@ const completeSVG = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns
 document.getElementById('add').addEventListener('click', function() {
   // console.log('button clicked');
   const value = document.getElementById('item').value;
-  if (value) addItemTodo(value);
+
+  // If text field is not empty - execute addItemTodo function
+  if (value) {
+    addItemTodo(value);
+  }
 });
 
 // Add new item to the todo list
@@ -36,5 +40,6 @@ function addItemTodo(text) {
 
   item.appendChild(buttons);
 
-  list.appendChild(item);
+  // Insert item to the list as a first element
+  list.insertBefore(item, list.childNodes[0]);
 }
